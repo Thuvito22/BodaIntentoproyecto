@@ -25,39 +25,32 @@
     </style>
     <script type="text/javascript">
         $(function () {
-            // jquery funciona con los selectores, este es el de id 
+
             $("#f").submit(function (e) {
                 e.preventDefault();
-                // alert("tienes el control");
-                //console.log($("#nombre").val());
 
-                var nombretxt = $("#nombre").val();
-                if (validarNombre(nombretxt)) {
-                    console.log("Correcto");
-                } else {
-                    console.log("Incorrecto");
-                    ($("#nombre").next()).removeClass("valido").addClass("no valido");
-                }
+                let nombretxt = $("#nombre").val();
+                if (!validarNombre(nombretxt))
+                    $("#nombre").next().removeClass("valido").addClass("no valido");
+
             });
 
             $("#nombre").on("input", function (e) {
-                var nombretxt = $(this).val();
-                if (validarNombre(nombretxt)) {
-                    ($("#nombre").next()).removeClass("novalido").addClass("valido");
-                } else {
-                    ($("#nombre").next()).removeClass("valido").addClass("novalido");
-                }
+                let cajaNombre=$(this);          
+                if (validarNombre(cajaNombre.val))
+                  $cajaNombre.next().removeClass().addClass("valido");
+                else $cajaNombre.next().removeClass().addClass("novalido");
+
+
             });
         });
 
-        function validarNombre(nombre) {
-            if (nombretxt.length >= 3 && nombretxt.length <= 10) {
-                return true;
-            } else {
-                return false;
-            }
-
-        }
+        function validarNombre(nombretxt) {
+            return nombretxt.length >= 3 && nombretxt.length <= 10? true:false; 
+                
+            } 
+            
+        
 
     </script>
 </head>
