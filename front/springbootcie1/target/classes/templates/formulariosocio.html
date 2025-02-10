@@ -27,19 +27,21 @@
         $(function () {
 
             $("#f").submit(function (e) {
-                e.preventDefault();
+                
 
                 let nombretxt = $("#nombre").val();
                 if (!validarNombre(nombretxt))
                     $("#nombre").next().removeClass("valido").addClass("no valido");
+               
 
             });
 
-            $("#nombre").on("input", function (e) {
+            $("#nombre").on("input", function ( e) {
                 let cajaNombre=$(this);          
                 if (validarNombre(cajaNombre.val))
                   $cajaNombre.next().removeClass().addClass("valido");
                 else $cajaNombre.next().removeClass().addClass("novalido");
+                e.preventDefault();
 
 
             });
